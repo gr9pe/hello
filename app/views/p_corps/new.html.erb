@@ -1,0 +1,48 @@
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<div class="title">企業情報登録</div>
+<%= form_for @corp, url: p_corps_create_path do |f| %>
+    <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :name,"名称", {class: 'control-label'} %>
+        <%= f.text_field :name, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :status_id,"選考状況", {class: 'control-label'} %>
+        <%= f.collection_select :status_id, Status.all, :status_id, :status, {prompt: ""}, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :about,"概要", {class: 'control-label'} %>
+        <%= f.text_area :about, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :description,"詳細", {class: 'control-label'} %>
+        <%= f.text_area :description, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :motivation,"志望動機", {class: 'control-label'} %>
+        <%= f.text_area :motivation, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :address,"所在地", {class: 'control-label'} %>
+      <%= f.text_field :address, {class: 'form-control', id:'address'} %>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :url, "企業URL", {class: 'control-label'} %>
+        <%= f.text_field :url, {class: 'form-control'} %>
+      </div>
+    </div>
+    <%= f.submit "保存", {class: "btn btn-primary btn-sm"}  %>
+  <% end %>

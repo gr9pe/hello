@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import "bootstrap-icons/font/bootstrap-icons";
+
+ .field_with_errors {
+    display: contents;
+  }
+  .btn,btn-sm {
+    margin-top: 20px;
+  }
+  .title{
+    padding: 10px;
+    font-size: large;
+  }
+  .bordernon {
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+  .form-check{
+    margin-top: 20px;
+  }
+  .bi{
+    padding: 5px;
+  }
+  #map {
+    height: 300px;
+    width: 600px;
+  }

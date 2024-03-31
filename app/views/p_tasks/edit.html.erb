@@ -1,2 +1,67 @@
-<h1>PTasks#edit</h1>
-<p>Find me in app/views/p_tasks/edit.html.erb</p>
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<div class="title"><%= @task.title %></div>
+<%= form_for @task, url: {action: 'update'}, p_task_id: @task.p_task_id do |f| %>
+  <%= f.hidden_field :p_task_id %>
+  <div class="form-group">
+    <div class="col-6"> 
+      <%= f.label :title, "タイトル", {class: 'control-label'} %>
+      <%= f.text_field :title, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-6"> 
+      <%= f.label :detail, "詳細", {class: 'control-label'} %>
+      <%= f.text_field :detail, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-6"> 
+      <%= f.label :deadline, "日程", {class: 'control-label'} %>
+      <%= f.datetime_local_field :deadline, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-6">
+      <%= f.label :p_corp_id, "企業名", {class: 'control-label'} %>
+      <%= f.collection_select :p_corp_id, PCorp.all, :p_corp_id, :name, {prompt: " "}, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-6"> 
+      <%= f.label :address,"住所", {class: 'control-label'} %>
+      <%= f.text_field :address, {class: 'form-control', id:'address'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-6"> 
+      <%= f.label :url, "URL", {class: 'control-label'} %>
+      <%= f.text_field :url, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-check">
+    <div class="col"> 
+      <%= f.label :isdone, "完了", {class: 'form-check-label'} %>
+      <%= f.check_box :isdone, {class: 'form-check-input'} %>
+    </div>
+  </div>
+
+  <%= javascript_pack_tag 'map' %>
+  <div id='map'></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>" async defer></script>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+        <%= button_tag type: "submit",class: "bordernon" do %>
+          <i class="bi bi-save"></i>
+        <% end %>
+        <%= link_to "/p_tasks/#{@task.p_task_id}", method: :delete, data: { confirm: '本当に削除しますか？'} do %>
+          <i class="bi bi-trash2-fill"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,32 @@
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<%= form_for @user, url: p_users_create_path do |f| %>
+  <div class="container">
+  <div class="title">新規登録</div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.label :lastname,"姓", {class: 'col-control-label'} %>
+      <%= f.text_field :lastname, {class: 'form-control'} %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :firstname,"名", {class: 'col-control-label'}%>
+      <%= f.text_field :firstname, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <%= f.label :mail,"メールアドレス", {class: 'control-label'} %>
+      <%= f.text_field :mail, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <%= f.label :password,"パスワード", {class: 'control-label'} %>
+      <%= f.password_field :password, {class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit "登録", {class: "btn-sm btn-primary"} %>
+  </div>
+<% end %>

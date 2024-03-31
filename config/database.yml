@@ -16,13 +16,13 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: grape0grape1
-  password: <%= ENV['PGPASSWORD'] %>
-  host: 0.0.0.0
+  host: localhost
+
 development:
   <<: *default
   database: job_hunt_manage
@@ -84,5 +84,4 @@ test:
 production:
   <<: *default
   database: job_hunt_manage
-  username: grape0grape1
-  password: <%= ENV['PGPASSWORD'] %>
+  password: "<%= ENV['PGPASSWORD'] %>"

@@ -1,2 +1,88 @@
-<h1>PUsers#edit</h1>
-<p>Find me in app/views/p_users/edit.html.erb</p>
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<%= form_for @user, url: p_users_update_path do |f| %>
+  <div class="container">
+  <div class="title">ユーザー情報</div>
+  <form class="form-horizontal">
+    <div class="row">
+      <div class="col-sm-2">
+        <%= f.label :lastname,"姓", {class: 'col-control-label'} %>
+        <%= f.text_field :lastname, {class: 'form-control'} %>
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :firstname,"名", {class: 'col-control-label'}%>
+        <%= f.text_field :firstname, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :birthday,"生年月日", {class: 'control-label'}%>
+          <%= f.datetime_local_field :birthday, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :gender,"性別", {class: 'control-label'}%>
+          <%= f.collection_select :gender_id, Gender.all, :gender_id, :gender, {prompt: ""}, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :post1,"郵便番号1", {class: 'control-label'}%>
+          <%= f.text_field :post1, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :post2,"郵便番号2", {class: 'control-label'}%>
+          <%= f.text_field :post2, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :prefecture,"都道府県", {class: 'control-label'}%>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :prefecture_id, :prefecture, {prompt: ""}, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :city,"市町村", {class: 'control-label'}%>
+          <%= f.text_field :city, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :address1,"住所1", {class: 'control-label'}%>
+          <%= f.text_field :address1, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :address2,"住所2", {class: 'control-label'}%>
+          <%= f.text_field :address2, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :phone,"電話番号", {class: 'control-label'} %>
+          <%= f.telephone_field :phone, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :mail,"メールアドレス", {class: 'control-label'} %>
+          <%= f.email_field :mail, {class: 'form-control'} %>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-4">
+          <%= f.label :password,"パスワード", {class: 'control-label'} %>
+          <%= f.password_field :password, {class: 'form-control'} %>
+        </div>
+      </div>
+    <div class="form-group">
+          <%= f.submit "保存", {class: "btn-sm btn-primary"} %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<div class="title">
+    企業一覧
+    <%= link_to p_corps_new_path do %>
+        <i class="bi bi-plus-lg"></i>
+    <% end %>
+</div>
+
+<% if @corps.nil? || @corps.empty? %>
+    <p>未登録</p>
+<% else %>
+    <ul class="list-group">
+    <% @corps.each do |corp| %>
+        <li class="list-group-item">
+            <%= corp.name %>
+            <%= link_to "p_corps/#{corp.p_corp_id}", method: :get do %>
+                <i class="bi bi-pencil"></i>
+            <% end %>
+            <%= link_to "p_corps/#{corp.p_corp_id}", method: :delete, data: {confirm: '本当に削除しますか？'} do %>
+                <i class="bi bi-trash2"></i>
+            <% end %>
+        </li>
+    <% end %>
+    </ul>
+<% end %>

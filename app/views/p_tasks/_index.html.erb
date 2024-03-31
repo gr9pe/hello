@@ -1,0 +1,33 @@
+<div class="title">
+    タスク一覧
+    <%= link_to p_tasks_new_path do %>
+        <i class="bi bi-plus-lg"></i>
+    <% end %>
+</div>
+
+<% if @tasks.nil? || @tasks.empty? %>
+    <p>未登録</p>
+<% else %>
+    <ul class="list-group">
+    <% @tasks.each do |task| %>
+        <li class="list-group-item">
+            <% if task.isdone == '1' %>
+                <del>
+            <% end %>
+            <% if !task.deadline.nil? %>
+                <%= l task.deadline %>
+            <% end %>
+            <%= task.title %>
+            <% if task.isdone == '1' %>
+                </del>
+            <% end %>
+            <%= link_to "/p_tasks/#{task.p_task_id}", method: :get do %>
+                <i class="bi bi-pencil"></i>
+            <% end %>
+            <%= link_to "/p_tasks/#{task.p_task_id}", method: :delete do %>
+                <i class="bi bi-trash2 bordernon"></i>
+            <% end %>
+        </li>
+    <% end %>
+    </ul>
+<% end %>

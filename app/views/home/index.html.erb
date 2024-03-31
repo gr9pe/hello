@@ -1,2 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if flash[:notice] %>
+  <div class="alert"><%= notice %></div>
+<% end %>
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<div class="container">
+  <div class="row">
+    <%= render 'p_tasks/index', { url: p_tasks_index_path(@tasks) } %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <%= render 'p_corps/index', { url: p_corps_index_path(@corps) } %>
+  </div>
+</div>
+
+

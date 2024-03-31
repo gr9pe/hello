@@ -1,0 +1,27 @@
+
+<% if flash[:alert] %>
+  <div class="alert"><%= alert %></div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="notice"><%= alert %></div>
+<% end %>
+<div class="container">
+  <div class="title">ログイン</div>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :mail,"メールアドレス", {class: 'control-label'} %>
+        <%= f.text_field :mail, {class: 'form-control'} %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+        <%= f.label :password,"パスワード", {class: 'control-label'} %>
+        <%= f.password_field :password, {class: 'form-control'} %>
+      </div>
+    </div>
+        <%= f.submit "ログイン", {class: "btn btn-primary btn-sm"} %>
+  <% end %>
+</div>
+  
+  

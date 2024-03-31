@@ -8,6 +8,9 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import 'bootstrap';
+import '/home/grape0grape1/job_hunt_manage/app/javascript/styleseets/application';
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
